@@ -3,8 +3,13 @@
 Easily create command-line menus.
 
 
+Install
+-
+
+    pip install Menu
+
 Create the Menu
--------------
+-
 
 The Menu constructor arguments are all optional. The arguments are options, title, message, prompt, and refresh. Options is a list of tuples consisting of a name and a handler. Refresh is a handler called before showing the menu.
 
@@ -16,13 +21,13 @@ The Menu constructor arguments are all optional. The arguments are options, titl
 	Menu(refresh=refreshHandler) # customize the refresh handler
 
 Open the Menu
--------------
+-
 
     menu = Menu()
     menu.open()
 
 Close the Menu
--------------
+-
 from the instance after creating the menu
 
     menu = Menu()
@@ -33,7 +38,7 @@ or use the static method before creating the menu
     Menu(options = [("Close", Menu.CLOSE)])
 
 Edit the menu
--------------
+-
 
     menu = Menu()
     menu.set_options([("new option name", newOptionHandler)])
@@ -42,7 +47,7 @@ Edit the menu
     menu.set_prompt("new prompt")
 
 Create a Submenu
--------------
+-
 
 	main = Menu(title = "Main Menu")
     sub = Menu(title = "Submenu")
