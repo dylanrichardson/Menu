@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='Menu',
-    version='3.0',
+    version='3.0.2',
     author='Dylan Richardson',
     author_email='dylanrichardson1996@gmail.com',
     packages=['menu'],
@@ -11,5 +11,4 @@ setup(
     license='LICENSE.txt',
     description='Easily create command-line menus',
     long_description=open('README.md').read(),
-    install_requires=[],
 )
