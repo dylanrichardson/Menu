@@ -10,6 +10,6 @@ setup(
     url='http://pypi.python.org/pypi/Menu/',
     license='LICENSE.txt',
     description='Easily create command-line menus',
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     install_requires=[],
 )
