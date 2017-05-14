@@ -1,7 +1,11 @@
+from __future__ import print_function
+from builtins import str
+from builtins import input
+from builtins import object
 import os
 
 
-class Menu:
+class Menu(object):
     def __init__(self, options=None, title=None, message=None, prompt=">>>", refresh=lambda: None):
         if options is None:
             options = []
@@ -32,7 +36,7 @@ class Menu:
                 if len(option) != 2:
                     raise ValueError(option, "option is not of length 2")
                 self.add_option(option[0], option[1])
-        except (TypeError, ValueError), e:
+        except (TypeError, ValueError) as e:
             self.options = original
             raise e
 
@@ -69,7 +73,7 @@ class Menu:
             func = self.input()
             if func == Menu.CLOSE:
                 func = self.close
-            print
+            print()
             func()
 
     def close(self):
@@ -80,14 +84,14 @@ class Menu:
     def show(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         if self.is_title_enabled:
-            print self.title
-            print
+            print(self.title)
+            print()
         if self.is_message_enabled:
-            print self.message
-            print
+            print(self.message)
+            print()
         for (index, option) in enumerate(self.options):
-            print str(index + 1) + ". " + option[0]
-        print
+            print(str(index + 1) + ". " + option[0])
+        print()
 
     # show the menu
     # get the option index from the input
@@ -97,7 +101,7 @@ class Menu:
             return Menu.CLOSE
         try:
             self.show()
-            index = int(raw_input(self.prompt + " ")) - 1
+            index = int(input(self.prompt + " ")) - 1
             return self.options[index][1]
         except (ValueError, IndexError):
             return self.input()
