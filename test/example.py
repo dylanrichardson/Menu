@@ -43,14 +43,14 @@ class UserExample:
             self.main_menu.set_message("Hello guest")
 
     def login(self):
-        raw_input("Password: ")
+        input("Password: ")
         self.logged_in = True
 
     def logout(self):
         self.logged_in = False
 
     def change_username(self):
-        self.username = raw_input("New username: ")
+        self.username = input("New username: ")
 
     def run(self):
         self.main_menu.open()

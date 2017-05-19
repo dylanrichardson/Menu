@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='Menu',
-    version='3.0.3',
+    version='3.1.0',
     author='Dylan Richardson',
     author_email='dylanrichardson1996@gmail.com',
     packages=['menu'],
