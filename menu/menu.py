@@ -6,7 +6,8 @@ import os
 
 
 class Menu(object):
-    def __init__(self, options=None, title=None, message=None, prompt=">>>", refresh=lambda: None):
+    def __init__(self, options=None, title=None, message=None, prompt=">>>",
+                 refresh=lambda: None, auto_clear=True):
         if options is None:
             options = []
         self.options = None
@@ -17,6 +18,7 @@ class Menu(object):
         self.refresh = None
         self.prompt = None
         self.is_open = None
+        self.auto_clear = auto_clear
 
         self.set_options(options)
         self.set_title(title)
@@ -82,7 +84,8 @@ class Menu(object):
     # clear the screen
     # show the options
     def show(self):
-        os.system('cls' if os.name == 'nt' else 'clear')
+        if self.auto_clear:
+            os.system('cls' if os.name == 'nt' else 'clear')
         if self.is_title_enabled:
             print(self.title)
             print()
