@@ -14,7 +14,8 @@ class UserExample:
             options=settings_options,
             title="Settings",
             message="Username: " + self.username,
-            refresh=self.updateUsername
+            refresh=self.updateUsername,
+            auto_clear=False
         )
         self.logged_out_options = [
             ("Login", self.login),
