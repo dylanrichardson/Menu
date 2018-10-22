@@ -18,7 +18,7 @@ class UserExample:
             auto_clear=False
         )
         self.logged_out_options = [
-            ("Login", self.login),
+            ("Login", self.login, {"auth": lambda: input("Password: ")}),
             ("Exit", Menu.CLOSE)
         ]
         self.logged_in_options = [
@@ -43,8 +43,9 @@ class UserExample:
             self.main_menu.set_options(self.logged_out_options)
             self.main_menu.set_message("Hello guest")
 
-    def login(self):
-        input("Password: ")
+    def login(self, auth=None):
+        if auth:
+            auth()
         self.logged_in = True
 
     def logout(self):

@@ -35,9 +35,10 @@ class Menu(object):
             for option in options:
                 if not isinstance(option, tuple):
                     raise TypeError(option, "option is not a tuple")
-                if len(option) != 2:
-                    raise ValueError(option, "option is not of length 2")
-                self.add_option(option[0], option[1])
+                if len(option) < 2:
+                    raise ValueError(option, "option is missing a handler")
+                kwargs = option[2] if len(option) == 3 else {}
+                self.add_option(option[0], option[1], kwargs)
         except (TypeError, ValueError) as e:
             self.options = original
             raise e
@@ -62,10 +63,10 @@ class Menu(object):
             raise TypeError(refresh, "refresh is not callable")
         self.refresh = refresh
 
-    def add_option(self, name, handler):
+    def add_option(self, name, handler, kwargs):
         if not callable(handler):
             raise TypeError(handler, "handler is not callable")
-        self.options += [(name, handler)]
+        self.options += [(name, handler, kwargs)]
 
     # open the menu
     def open(self):
@@ -105,7 +106,12 @@ class Menu(object):
         try:
             self.show()
             index = int(input(self.prompt + " ")) - 1
-            return self.options[index][1]
+            option = self.options[index]
+            handler = option[1]
+            if handler == Menu.CLOSE:
+                return Menu.CLOSE
+            kwargs = option[2]
+            return lambda: handler(**kwargs)
         except (ValueError, IndexError):
             return self.input()
 

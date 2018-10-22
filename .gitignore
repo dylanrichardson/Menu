@@ -1,3 +1,5 @@
 .idea/
 Menu.iml
 dist/
+Menu.egg-info/
+menu/__pycache__/

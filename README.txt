@@ -13,12 +13,13 @@ Create the Menu
 
 The Menu constructor arguments are all optional. The arguments are options, title, message, prompt, and refresh. Options is a list of tuples consisting of a name and a handler. Refresh is a handler called before showing the menu.
 
-	Menu() # empty menu, will close upon opening
-	Menu(options=[("Option Name", optionHandler)]) # customize the options
-	Menu(title="Menu title") # customize the title
-	Menu(message="Message text") # customize the message, disabled by default
-	Menu(prompt=">") # customize the user input prompt
-	Menu(refresh=refreshHandler) # customize the refresh handler
+    Menu() # empty menu, will close upon opening
+    Menu(options=[("Option Name", optionHandler)]) # customize the options
+    Menu(options=[("Option Name", optionHandler, {'key': val})]) # add kwargs to option handlers
+    Menu(title="Menu title") # customize the title
+    Menu(message="Message text") # customize the message, disabled by default
+    Menu(prompt=">") # customize the user input prompt
+    Menu(refresh=refreshHandler) # customize the refresh handler
 
 Open the Menu
 -
@@ -49,7 +50,7 @@ Edit the menu
 Create a Submenu
 -
 
-	main = Menu(title = "Main Menu")
+    main = Menu(title = "Main Menu")
     sub = Menu(title = "Submenu")
     main.set_options([
         ("Open submenu", sub.open),
@@ -59,3 +60,20 @@ Create a Submenu
         ("Return to main menu", sub.close)
     ])
     main.open()
+
+Example
+-
+
+[example.py](test/example.py)
+
+
+Development
+-
+
+Symlink package to immediately see changes locally
+    
+    $ pip install -e .
+
+Build and publish to PyPI
+
+    $ python setup.py register sdist upload
