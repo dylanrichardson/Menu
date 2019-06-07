@@ -5,7 +5,7 @@ Easily create command-line menus.
 ## Install
 
     pip install Menu
-    
+
 **Note:** Use with Python 2 requires the [future](https://pypi.org/project/future/) package to be installed.
 
 ## Create the Menu
@@ -71,6 +71,12 @@ Run the tests
 
     $ python test/tests.py
 
-Build and publish to PyPI
+Build
 
-    $ python setup.py register sdist upload
+    $ python setup.py sdist
+
+**Note:** Might need to login first with `python setup.py register`
+
+Publish to PyPI
+
+    $ twine upload dist/*
