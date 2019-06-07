@@ -7,6 +7,8 @@ Install
 -
 
     pip install Menu
+    
+**Note:** Use with Python 2 requires the [future](https://pypi.org/project/future/) package to be installed.
 
 Create the Menu
 -
