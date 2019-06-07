@@ -1,3 +1,7 @@
+from __future__ import print_function
+from builtins import str
+from builtins import input
+from builtins import object
 from menu import Menu
 
 

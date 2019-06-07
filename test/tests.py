@@ -26,6 +26,10 @@ class TestMenu(unittest.TestCase):
         self.assertTrue(Menu([(None, lambda: None)], message="").is_message_enabled)
         self.assertFalse(Menu([(None, lambda: None)]).is_message_enabled)
 
+    def test_title_enabled(self):
+        self.assertTrue(Menu([(None, lambda: None)], title="").is_title_enabled)
+        self.assertFalse(Menu([(None, lambda: None)]).is_title_enabled)
+
 
 if __name__ == '__main__':
     unittest.main()

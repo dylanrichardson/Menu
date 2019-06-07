@@ -2,35 +2,31 @@
 
 Easily create command-line menus.
 
-
-Install
--
+## Install
 
     pip install Menu
     
 **Note:** Use with Python 2 requires the [future](https://pypi.org/project/future/) package to be installed.
 
-Create the Menu
--
+## Create the Menu
 
 The Menu constructor arguments are all optional. The arguments are options, title, message, prompt, and refresh. Options is a list of tuples consisting of a name and a handler. Refresh is a handler called before showing the menu.
 
-	Menu() # empty menu, will close upon opening
+    Menu() # empty menu, will close upon opening
     Menu(options=[("Option Name", optionHandler)]) # customize the options
     Menu(options=[("Option Name", optionHandler, {'key': val})]) # add kwargs to option handlers
-	Menu(title="Menu title") # customize the title
-	Menu(message="Message text") # customize the message, disabled by default
-	Menu(prompt=">") # customize the user input prompt
-	Menu(refresh=refreshHandler) # customize the refresh handler
+    Menu(title="Menu title") # customize the title
+    Menu(message="Message text") # customize the message, disabled by default
+    Menu(prompt=">") # customize the user input prompt
+    Menu(refresh=refreshHandler) # customize the refresh handler
 
-Open the Menu
--
+## Open the Menu
 
     menu = Menu()
     menu.open()
 
-Close the Menu
--
+## Close the Menu
+
 from the instance after creating the menu
 
     menu = Menu()
@@ -40,8 +36,7 @@ or use the static method before creating the menu
 
     Menu(options = [("Close", Menu.CLOSE)])
 
-Edit the menu
--
+## Edit the menu
 
     menu = Menu()
     menu.set_options([("new option name", newOptionHandler)])
@@ -49,10 +44,9 @@ Edit the menu
     menu.set_message("new message")
     menu.set_prompt("new prompt")
 
-Create a Submenu
--
+## Create a Submenu
 
-	main = Menu(title = "Main Menu")
+    main = Menu(title = "Main Menu")
     sub = Menu(title = "Submenu")
     main.set_options([
         ("Open submenu", sub.open),
@@ -63,18 +57,19 @@ Create a Submenu
     ])
     main.open()
 
-Example
--
+## Example
 
 [example.py](test/example.py)
 
-
-Development
--
+## Development
 
 Symlink package to immediately see changes locally
-    
+
     $ pip install -e .
+
+Run the tests
+
+    $ python test/tests.py
 
 Build and publish to PyPI
 

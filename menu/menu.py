@@ -22,7 +22,7 @@ class Menu(object):
 
         self.set_options(options)
         self.set_title(title)
-        self.set_title_enabled(True)
+        self.set_title_enabled(title is not None)
         self.set_message(message)
         self.set_message_enabled(message is not None)
         self.set_prompt(prompt)
